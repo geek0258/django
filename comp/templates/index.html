@@ -24,6 +24,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Номын нэр</th>
+                    <th scope="col">Номын нэр</th>
                     <th scope="col">Зохиолч</th>
                     <th scope="col">Он</th>
                     <th scope="col">Тоо</th>
@@ -33,12 +34,13 @@
             <tbody>
                 {% for book in books %}
                 <tr>
+                    <th>{{book.id}}</th>
                     <th>{{book.name}}</th>
                     <td>{{book.author}}</td>
                     <td>{{book.year}}</td>
                     <td>{{book.count}}</td>
                     <td>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                        <a class="edit" href="{% url 'updateBook' book.id %}" title="Edit"><i class="fas fa-edit"></i></a>
                         <a class="delete" title="Delete" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -49,7 +51,6 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Ном нэмэх
         </button>
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -86,7 +87,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </body>
-
 </html>

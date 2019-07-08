@@ -20,5 +20,7 @@ from comp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saveBook', views.saveBook),
-    path('books/', views.getAll),
+    path('deleteBook', views.deleteBook),
+    path('updateBook/(?P<id>\d+)$', views.updateBook, name='updateBook'),
+    path('', views.getAll),
 ]

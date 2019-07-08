@@ -18,3 +18,25 @@ def saveBook(request):
 def getAll(request):
     books = Book.objects.all()
     return render(request, "index.html", {"books": books})
+
+def updateBook(request, id):
+    book = Book.objects.get(id=id)
+    form = BookForm(request.POST, instance = book)
+    if form.is_valid():
+        try:
+            form.save();
+        except:
+            pass
+        return redirect("")
+    return render(request, "edit.html", {"book": book})
+
+def deleteBook(request, id):
+    book = Book.objects.get(id=id)
+    if book:
+        try:
+            book.delete()
+        except:
+            pass
+        return redirect("")
+    books = Book.objects.all()
+    return render(request, "index.html", {"books": books})
